@@ -1,6 +1,7 @@
 ##### FORGE #####
 .gradle/
 .settings/
+src/main/java/com/example/
 bin/
 build/
 eclipse/
