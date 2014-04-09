@@ -34,8 +34,8 @@ public class Construct
 		linkChair = new LinkChair().setTextureName("construct:linkChair");
 		GameRegistry.registerItem(linkChair,linkChair.getUnlocalizedName());
 		
-		powerCore = new PowerCore(Material.wood).setHardness(0.5F).setCreativeTab(CreativeTabs.tabBlock).setBlockName("powerCore")
-				.setBlockTextureName("construct:powerCore");
+		//powerCore = new PowerCore(Material.wood).setHardness(0.5F).setCreativeTab(CreativeTabs.tabBlock).setBlockName("powerCore").setBlockTextureName("construct:powerCore");
+		powerCore = new PowerCore(false);
 		GameRegistry.registerBlock(powerCore, "powerCore");
 		
 		
