@@ -1,57 +1,57 @@
+/*
+ * Following Mouse tutorials
+ * http://mousetutorial.co.nf/
+ */
+
 package org.ditchbuster.construct.guis;
 
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.tileentity.TileEntityFurnace;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;
-
-import org.ditchbuster.construct.containers.PowerCoreContainer;
-import org.ditchbuster.construct.tileEntity.PowerCoreEntity;
-import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class PowerCoreGui extends GuiContainer
+public class PowerCoreGui extends GuiScreen
 {
-    private static final ResourceLocation furnaceGuiTextures = new ResourceLocation("textures/gui/container/furnace.png");
-    private PowerCoreEntity tilePC;
-    private static final String __OBFID = "CL_00000758";
 
-    public PowerCoreGui(InventoryPlayer par1InventoryPlayer, PowerCoreEntity pce)
-    {
-        super(new PowerCoreContainer(par1InventoryPlayer, pce));
-        this.tilePC = pce;
-    }
-
-    /**
-     * Draw the foreground layer for the GuiContainer (everything in front of the items)
+	/**
+     * The gui file needs to be 256x256.
+     * The GUI ITSELF can have any size you want
+     * Define them here
+     * These are the GUI sizes!
      */
-    protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_)
+    int xSize = 176;
+    int ySize = 214;
+    private static final ResourceLocation backgroundimage = new ResourceLocation("construct:textures/gui/mygui.png");
+ 
+	
+	
+	public PowerCoreGui() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	
+
+	@Override
+    public void drawScreen(int par1, int par2, float par3)
     {
-        String s = this.tilePC.hasCustomInventoryName() ? this.tilePC.getInventoryName() : I18n.format(this.tilePC.getInventoryName(), new Object[0]);
-        this.fontRendererObj.drawString(s, this.xSize / 2 - this.fontRendererObj.getStringWidth(s) / 2, 6, 4210752);
-        this.fontRendererObj.drawString(I18n.format("container.inventory", new Object[0]), 8, this.ySize - 96 + 2, 4210752);
+        //Bind Texture
+        this.mc.getTextureManager().bindTexture(backgroundimage);
+        // set the x for the texture, Total width - textureSize / 2
+        par2 = (this.width - xSize) / 2;
+        // set the y for the texture, Total height - textureSize - 30 (up) / 2,
+        int j = (this.height - ySize - 30) / 2;
+        // draw the texture
+        drawTexturedModalRect(par2, j, 0, 0, xSize,  ySize);
     }
-
-    protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_)
+	
+	public boolean doesGuiPauseGame()
     {
-        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        this.mc.getTextureManager().bindTexture(furnaceGuiTextures);
-        int k = (this.width - this.xSize) / 2;
-        int l = (this.height - this.ySize) / 2;
-        this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
-        int i1;
-
-        if (this.tilePC.isBurning())
-        {
-            i1 = this.tilePC.getBurnTimeRemainingScaled(12);
-            this.drawTexturedModalRect(k + 56, l + 36 + 12 - i1, 176, 12 - i1, 14, i1 + 2);
-        }
-
-        i1 = this.tilePC.getCookProgressScaled(24,1);
-        this.drawTexturedModalRect(k + 79, l + 34, 176, 14, i1 + 1, 16);
+        return false;
     }
+	
+	
+   
 }
