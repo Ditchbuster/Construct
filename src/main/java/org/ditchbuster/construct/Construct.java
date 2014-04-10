@@ -61,9 +61,11 @@ public class Construct
 	    	"AAA",
 	    	'A', Items.cookie
 	});
+		
+		//Register our GUI Handler.
+        NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 	}
 	public void init(FMLInitializationEvent event) {
-		 //Register our GUI Handler.
-        NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
+		 
 	}
 }
