@@ -25,7 +25,7 @@ import org.ditchbuster.construct.tileEntity.PowerCoreEntity;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class PowerCore extends Block
+public class PowerCore extends BlockContainer
 {
 
 	public PowerCore(Material p_i45386_1_) {
@@ -38,12 +38,23 @@ public class PowerCore extends Block
     {
         return true;
     }
+	@Override
+    public TileEntity createNewTileEntity(World var1, int var2)
+    {
+        return new PowerCoreEntity();
+    }
 	
 	@Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer entityPlayer, int par1, float par2, float par3, float par4)
     {
         entityPlayer.openGui(Construct.instance, 0, world, x ,y, z);
         return true;
+    }
+	@Override
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister iconRegister)
+    {
+        this.blockIcon = iconRegister.registerIcon(this.getUnlocalizedName());
     }
    
 	

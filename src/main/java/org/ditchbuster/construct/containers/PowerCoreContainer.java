@@ -1,32 +1,59 @@
 /*
- * Code adapted from microjunks tutorials
- * 
- * http://www.minecraftforum.net/topic/1924178-forge-164-micros-furnace-tutorials-will-update-all-parts-to-164/
+ * Mouse tutorials
  */
-
 package org.ditchbuster.construct.containers;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotFurnace;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 
+import org.ditchbuster.construct.inventory.CoreSlot;
 import org.ditchbuster.construct.tileEntity.PowerCoreEntity;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class PowerCoreContainer extends Container
 {
+	private PowerCoreEntity tile;
+
+	public PowerCoreContainer(InventoryPlayer inventory, PowerCoreEntity tileEntityTestContainer) {
+		tile = tileEntityTestContainer;
+		bindPlayerInventory(inventory);
+	}
+
+	private void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
+		int id = 0; // ID's for player inventory
+		int id2 = 0;
+
+		for (int i = 0; i < 9; i++) {
+			addSlotToContainer(new Slot(inventoryPlayer, id, i * 18 + 8, 189)); // Adds player hotbar
+			id++;
+		}
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 9; j++) {
+				addSlotToContainer(new Slot(inventoryPlayer, id, j * 18 + 8, i * 18 + 131)); // Adds player inventory
+				id++;
+			}
+
+		}
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 2; j++) {
+				addSlotToContainer(new CoreSlot(tile, id2, i * 18 + 62, j * 18 + 21)); // Adds custon slots
+				id2++;
+			}
+		}
+		addSlotToContainer(new CoreSlot(tile, id2, 81, 95)); // Adds custom output
+	}
+
+	@Override
+	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int slotIndex) {
+		return null;
+	}
 
 	@Override
 	public boolean canInteractWith(EntityPlayer var1) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
 }

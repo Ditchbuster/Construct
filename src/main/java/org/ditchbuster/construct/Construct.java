@@ -55,6 +55,7 @@ public class Construct
 		GameRegistry.registerBlock(powerCore, "powerCore");
 		
 		
+		
 		GameRegistry.addRecipe(new ItemStack(Blocks.obsidian), new Object[]{
 	    	"AAA",
 	    	"AAA",
