@@ -47,15 +47,17 @@ public class PowerCore extends BlockContainer
 	@Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer entityPlayer, int par1, float par2, float par3, float par4)
     {
-        entityPlayer.openGui(Construct.instance, 0, world, x ,y, z);
+        System.out.println("Block Activated");
+		entityPlayer.openGui(Construct.instance, 0, world, x ,y, z);
         return true;
     }
-	@Override
+	/*@Override
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister iconRegister)
     {
         this.blockIcon = iconRegister.registerIcon(this.getUnlocalizedName());
     }
+    */
    
 	
 }

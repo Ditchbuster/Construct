@@ -26,23 +26,23 @@ public class PowerCoreContainer extends Container
 		int id2 = 0;
 
 		for (int i = 0; i < 9; i++) {
-			addSlotToContainer(new Slot(inventoryPlayer, id, i * 18 + 8, 189)); // Adds player hotbar
+			addSlotToContainer(new Slot(inventoryPlayer, id, i * 18 + 8, 166)); // Adds player hotbar
 			id++;
 		}
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 9; j++) {
-				addSlotToContainer(new Slot(inventoryPlayer, id, j * 18 + 8, i * 18 + 131)); // Adds player inventory
+				addSlotToContainer(new Slot(inventoryPlayer, id, j * 18 + 8, i * 18 + 108)); // Adds player inventory
 				id++;
 			}
 
 		}
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 2; j++) {
-				addSlotToContainer(new CoreSlot(tile, id2, i * 18 + 62, j * 18 + 21)); // Adds custon slots
+				addSlotToContainer(new CoreSlot(tile, id2, i * 18 + 62, j * 18 - 4)); // Adds custon slots
 				id2++;
 			}
 		}
-		addSlotToContainer(new CoreSlot(tile, id2, 81, 95)); // Adds custom output
+		addSlotToContainer(new CoreSlot(tile, id2, 81, 73)); // Adds custom output
 	}
 
 	@Override
@@ -53,7 +53,7 @@ public class PowerCoreContainer extends Container
 	@Override
 	public boolean canInteractWith(EntityPlayer var1) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 }

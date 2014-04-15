@@ -13,6 +13,8 @@ import org.ditchbuster.construct.guis.PowerCoreGui;
 import org.ditchbuster.construct.tileEntity.PowerCoreEntity;
 
 import cpw.mods.fml.common.network.IGuiHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class GuiHandler implements IGuiHandler
 {
@@ -22,6 +24,7 @@ public class GuiHandler implements IGuiHandler
 	/**
 	 * Gets the server element. This means, do something server side, when this ID gets called.
 	 */
+	
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		if (ID == 0) {
@@ -35,6 +38,7 @@ public class GuiHandler implements IGuiHandler
 	/**
 	 * Gets the client element. This means, do something client side, when this ID gets called.
 	 */
+	
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		System.out.println("Here is GUI Handler:" + ID);
