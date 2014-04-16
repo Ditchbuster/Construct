@@ -16,12 +16,14 @@ public class PowerCoreEntity extends TileEntity implements IInventory
      */
     private ItemStack[] inventory;
     private int INVENTORY_SIZE = 7;
+    private int powerLevel;
 
     //Initializes our inventory.
     public PowerCoreEntity()
     {
         //Initializes our inventory (ItemStack array)
         inventory = new ItemStack[INVENTORY_SIZE];
+        powerLevel=0;
     }
     @Override
     public void writeToNBT(NBTTagCompound nbtTagCompound)
@@ -39,7 +41,9 @@ public class PowerCoreEntity extends TileEntity implements IInventory
                 nbttaglist.appendTag(nbttagcompound);
             }
         }
+        
         nbtTagCompound.setTag("Items", nbttaglist);
+        nbtTagCompound.setInteger("powerLevel", powerLevel);
     }
     @Override
     public void readFromNBT(NBTTagCompound nbtTagCompound)
@@ -58,6 +62,8 @@ public class PowerCoreEntity extends TileEntity implements IInventory
                 this.inventory[j] = ItemStack.loadItemStackFromNBT(nbttagcompound);
             }
         }
+        powerLevel = nbtTagCompound.getInteger("powerLevel");
+        
     }
 
     //Returns the size of the inventory (aka number of slots, see INVENTORY_SIZE)
